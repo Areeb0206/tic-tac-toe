@@ -8,7 +8,8 @@ class Tictactoe extends Component{
 		this.state = {
 
              game:Array(9).fill(null),
-             player:"x"
+             player:"x",
+             winner:null
 
 		}
 
@@ -34,6 +35,10 @@ winner(){
 
 		if(this.state.game[a] && this.state.game[a] === this.state.game[b] && this.state.game[a]===this.state.game[c]){
 			alert("you won");
+
+			this.setState({
+				winner:this.state.player
+			})
 		}
 	}
 
@@ -44,7 +49,7 @@ winner(){
 
     let newgame=this.state.game
 
-    if( newgame[index] === null ){
+    if( newgame[index] === null && !this.state.winner){
     	  newgame[index]=this.state.player
 
     let newplayer=this.state.player === "x" ? "o" : "x"
